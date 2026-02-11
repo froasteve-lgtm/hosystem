@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handover System MVP</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Team Handover System</h1>
+      <p>Runnable MVP for multi-team shift reporting and handover.</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>1) Create team</h2>
+        <form id="team-form">
+          <input id="team-name" placeholder="Team name" required />
+          <button type="submit">Create team</button>
+        </form>
+        <ul id="teams-list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>2) Create user</h2>
+        <form id="user-form">
+          <select id="user-team" required></select>
+          <input id="user-name" placeholder="Full name" required />
+          <input id="user-email" placeholder="Email" type="email" required />
+          <select id="user-role">
+            <option value="operator">operator</option>
+            <option value="shift_lead">shift_lead</option>
+            <option value="admin">admin</option>
+          </select>
+          <button type="submit">Create user</button>
+        </form>
+        <ul id="users-list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>3) Create shift + report + handover item</h2>
+        <form id="quick-form">
+          <select id="quick-team" required></select>
+          <select id="quick-user" required></select>
+          <input id="shift-name" placeholder="Shift name (e.g. Night A)" required />
+          <textarea id="report-summary" placeholder="Shift summary" required></textarea>
+          <input id="item-title" placeholder="Handover item title" required />
+          <select id="item-priority">
+            <option value="low">low</option>
+            <option value="medium" selected>medium</option>
+            <option value="high">high</option>
+            <option value="critical">critical</option>
+          </select>
+          <button type="submit">Create records</button>
+        </form>
+      </section>
+
+      <section class="card stats">
+        <h2>4) Dashboard</h2>
+        <div id="stats-empty">Select a team to load stats.</div>
+        <div id="stats" class="hidden">
+          <div><strong>Open:</strong> <span id="stat-open"></span></div>
+          <div><strong>Overdue:</strong> <span id="stat-overdue"></span></div>
+          <div><strong>Critical open:</strong> <span id="stat-critical"></span></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>5) Handover items</h2>
+        <ul id="items-list"></ul>
+      </section>
+
+      <section id="toast" class="toast hidden"></section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
